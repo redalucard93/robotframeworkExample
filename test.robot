@@ -3,6 +3,7 @@ Library  Selenium2Library
 Library  RequestsLibrary
 Library  Process
 Library  helloworld.py
+Library  AutoItLibrary
 *** Variables ***
 ${browser}   chrome
 ${Base_URL}  http://localhost:3000
@@ -14,7 +15,7 @@ TC_001_Get_Request
      log to console  ${response.status_code}
      ${status_code}=  convert to string  ${response.status_code}
      ${result}=  run_robot_keyword  ${response.content}
-    
+     log to console  ${result}
      #VALIDATIONS
      should be equal  ${status_code}  200 
      
