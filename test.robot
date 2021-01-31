@@ -1,21 +1,21 @@
 *** Settings ***
-Library  Selenium2Library
+Library  SeleniumLibrary
 Library  RequestsLibrary
 Library  Process
-Library  helloworld.py
-Library  AutoItLibrary
+Library  test.py
+Resource  testAutoItLib.robot
 *** Variables ***
 ${browser}   chrome
 ${Base_URL}  http://localhost:3000
 ${url}   https://www.google.com/
 *** Test Cases ***
 TC_001_Get_Request
-     Create session  Get_Student_Details  ${Base_URL}
-     ${response}=  get request  Get_Student_Details  /actions
+     Create session  Get_Commandes  ${Base_URL}
+     ${response}=  get request  Get_Commandes  /actions
      log to console  ${response.status_code}
      ${status_code}=  convert to string  ${response.status_code}
-     ${result}=  run_robot_keyword  ${response.content}
-     log to console  ${result}
+     run_robot_keyword  ${response.content}
+     
      #VALIDATIONS
      should be equal  ${status_code}  200 
      
